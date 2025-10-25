@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Network - Projet 0</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="social.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="social-container">
+        <!-- Header Navigation -->
+        <header class="social-header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <span class="logo-text">Connect</span>
+                </div>
+                
+                <nav class="main-nav">
+                    <a href="#home" class="nav-link active" data-section="home">
+                        <i class="fas fa-home"></i>
+                        <span data-translate="nav.home">Home</span>
+                    </a>
+                    <a href="#messages" class="nav-link" data-section="messages">
+                        <i class="fas fa-comments"></i>
+                        <span data-translate="nav.messages">Messages</span>
+                        <span class="notification-badge" id="messageBadge">0</span>
+                    </a>
+                    <a href="#profile" class="nav-link" data-section="profile">
+                        <i class="fas fa-user"></i>
+                        <span data-translate="nav.profile">Profile</span>
+                    </a>
+                    <a href="#discover" class="nav-link" data-section="discover">
+                        <i class="fas fa-search"></i>
+                        <span data-translate="nav.discover">Discover</span>
+                    </a>
+                </nav>
+
+                <div class="user-actions">
+                    <div class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="language-toggle" id="languageToggle">
+                        <i class="fas fa-globe"></i>
+                        <span data-translate="nav.language">EN</span>
+                    </div>
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notificationBadge">0</span>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/0be2ac/ffffff?text=U" alt="User" class="user-avatar" id="headerUserAvatar">
+                        <span id="userName">User</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="social-main">
+            <!-- Home Section -->
+            <section id="home" class="content-section active">
+                <div class="feed-container">
+                    <!-- Create Post -->
+                    <div class="create-post">
+                        <div class="post-header">
+                            <img src="https://via.placeholder.com/50x50/0be2ac/ffffff?text=U" alt="User" class="user-avatar" id="createPostAvatar">
+                            <input type="text" placeholder="What's on your mind?" id="postInput" data-translate="placeholder.post">
+                        </div>
+                        <div class="post-actions">
+                            <button class="action-btn" data-type="photo">
+                                <i class="fas fa-image"></i>
+                                <span data-translate="post.photo">Photo</span>
+                            </button>
+                            <button class="action-btn" data-type="video">
+                                <i class="fas fa-video"></i>
+                                <span data-translate="post.video">Video</span>
+                            </button>
+                            <button class="action-btn" data-type="feeling">
+                                <i class="fas fa-smile"></i>
+                                <span data-translate="post.feeling">Feeling</span>
+                            </button>
+                            <button class="post-btn" id="publishPost">
+                                <i class="fas fa-paper-plane"></i>
+                                <span data-translate="post.publish">Publish</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Posts Feed -->
+                    <div class="posts-feed" id="postsFeed">
+                        <!-- Posts will be dynamically added here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Messages Section -->
+            <section id="messages" class="content-section">
+                <div class="messages-container">
+                    <div class="conversations-sidebar">
+                        <div class="conversations-header">
+                            <h3>Messages</h3>
+                            <button class="new-message-btn">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="conversations-list" id="conversationsList">
+                            <!-- Conversations will be added here -->
+                        </div>
+                    </div>
+                    
+                    <div class="chat-area">
+                        <div class="chat-header">
+                            <div class="chat-user-info">
+                                <img src="https://via.placeholder.com/40x40/0be2ac/ffffff?text=U" alt="User" class="user-avatar">
+                                <div class="user-details">
+                                    <h4 id="chatUserName">Sélectionnez une conversation</h4>
+                                    <span id="chatUserStatus">En ligne</span>
+                                </div>
+                            </div>
+                            <div class="chat-actions">
+                                <button class="chat-action-btn">
+                                    <i class="fas fa-phone"></i>
+                                </button>
+                                <button class="chat-action-btn">
+                                    <i class="fas fa-video"></i>
+                                </button>
+                                <button class="chat-action-btn">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="messages-area" id="messagesArea">
+                            <div class="welcome-message">
+                                <i class="fas fa-comments"></i>
+                                <p>Commencez une nouvelle conversation</p>
+                            </div>
+                        </div>
+                        
+                        <div class="message-input-area">
+                            <div class="message-input-container">
+                                <button class="attachment-btn">
+                                    <i class="fas fa-paperclip"></i>
+                                </button>
+                                <input type="text" placeholder="Tapez votre message..." id="messageInput">
+                                <button class="emoji-btn">
+                                    <i class="fas fa-smile"></i>
+                                </button>
+                                <button class="send-btn" id="sendMessage">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile" class="content-section">
+                <div class="profile-container">
+                    <div class="profile-header">
+                        <div class="cover-photo">
+                            <img src="https://via.placeholder.com/800x300/1a7f66/ffffff?text=Cover+Photo" alt="Cover">
+                            <button class="edit-cover-btn">
+                                <i class="fas fa-camera"></i>
+                                Modifier la photo de couverture
+                            </button>
+                        </div>
+                        <div class="profile-info">
+                            <div class="profile-avatar">
+                                <img src="https://via.placeholder.com/150x150/0be2ac/ffffff?text=U" alt="Profile" id="profileAvatar">
+                                <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+                                <button class="edit-avatar-btn" id="editAvatarBtn">
+                                    <i class="fas fa-camera"></i>
+                                </button>
+                            </div>
+                            <div class="profile-details">
+                                <h2 id="profileName">Nom Utilisateur</h2>
+                                <p id="profileBio">Bio utilisateur</p>
+                                <div class="profile-stats">
+                                    <div class="stat">
+                                        <span class="stat-number" id="postsCount">0</span>
+                                        <span class="stat-label">Publications</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number" id="followersCount">0</span>
+                                        <span class="stat-label">Abonnés</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number" id="followingCount">0</span>
+                                        <span class="stat-label">Abonnements</span>
+                                    </div>
+                                </div>
+                                <button class="edit-profile-btn">
+                                    <i class="fas fa-edit"></i>
+                                    Modifier le profil
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-content">
+                        <div class="profile-tabs">
+                            <button class="tab-btn active" data-tab="posts">Publications</button>
+                            <button class="tab-btn" data-tab="about">À propos</button>
+                            <button class="tab-btn" data-tab="photos">Photos</button>
+                        </div>
+                        
+                        <div class="tab-content">
+                            <div class="tab-panel active" id="postsTab">
+                                <div class="user-posts" id="userPosts">
+                                    <!-- User posts will be displayed here -->
+                                </div>
+                            </div>
+                            <div class="tab-panel" id="aboutTab">
+                                <div class="about-content">
+                                    <h3>Informations personnelles</h3>
+                                    <div class="info-item">
+                                        <i class="fas fa-birthday-cake"></i>
+                                        <span>Date de naissance</span>
+                                        <span>Non spécifié</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Lieu</span>
+                                        <span>Non spécifié</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-briefcase"></i>
+                                        <span>Profession</span>
+                                        <span>Non spécifié</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-panel" id="photosTab">
+                                <div class="photos-grid" id="photosGrid">
+                                    <!-- User photos will be displayed here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Discover Section -->
+            <section id="discover" class="content-section">
+                <div class="discover-container">
+                    <div class="search-section">
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Rechercher des personnes..." id="searchInput">
+                        </div>
+                    </div>
+                    
+                    <div class="discover-content">
+                        <div class="suggestions">
+                            <h3>Suggestions pour vous</h3>
+                            <div class="suggestions-list" id="suggestionsList">
+                                <!-- Suggestions will be added here -->
+                            </div>
+                        </div>
+                        
+                        <div class="trending">
+                            <h3>Tendances</h3>
+                            <div class="trending-list" id="trendingList">
+                                <!-- Trending topics will be added here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="userModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Profil utilisateur</h3>
+                <button class="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="user-profile-preview">
+                    <img src="https://via.placeholder.com/100x100/0be2ac/ffffff?text=U" alt="User" class="user-avatar">
+                    <div class="user-info">
+                        <h4 id="modalUserName">Nom Utilisateur</h4>
+                        <p id="modalUserBio">Bio utilisateur</p>
+                        <div class="user-stats">
+                            <span id="modalFollowers">0 abonnés</span>
+                            <span id="modalFollowing">0 abonnements</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button class="follow-btn" id="followUserBtn">
+                        <i class="fas fa-user-plus"></i>
+                        Suivre
+                    </button>
+                    <button class="message-btn" id="messageUserBtn">
+                        <i class="fas fa-comment"></i>
+                        Message
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="social.js"></script>
+</body>
+</html>

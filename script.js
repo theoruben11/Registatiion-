@@ -74,11 +74,11 @@ document.addEventListener('DOMContentLoaded', function() {
           localStorage.setItem('userEmail', userData.email);
           localStorage.setItem('isLoggedIn', 'true');
           
-          // Rediriger vers le dashboard
+          // Rediriger directement vers le réseau social
           if (result.redirect) {
             window.location.href = result.redirect;
           } else {
-            window.location.href = '/dashboard.html';
+            window.location.href = '/social';
           }
         }
       } catch (error) {
